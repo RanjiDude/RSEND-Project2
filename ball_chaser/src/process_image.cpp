@@ -32,10 +32,10 @@ void process_image_callback(const sensor_msgs::Image img)
 
     for (int row=0; row<img.height; row++)
     {
-        for (int step=0; step<img.step; ++step)
+        for (int step=0; step<img.step; step+=3)
         {
             i = (row * img.step) + step;
-            if (img.data[i] == 255)
+            if (img.data[i] == 255 && img.data[i+1] == 255 && img.data[i+2] ==  255)
             {
                 if ((step/3) <= img.width * 0.33)
                 {
